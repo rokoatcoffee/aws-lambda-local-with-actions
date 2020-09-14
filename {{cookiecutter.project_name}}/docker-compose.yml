@@ -9,7 +9,6 @@ services:
       - AWS_ACCESS_KEY_ID={{ cookiecutter.AWS_ACCESS_KEY_ID }}
       - AWS_SECRET_ACCESS_KEY={{ cookiecutter.AWS_SECRET_ACCESS_KEY }}
       - AWS_DEFAULT_REGION={{ cookiecutter.AWS_DEFAULT_REGION }}
-      - SERVICES=lambda
       {%- if cookiecutter.aws_services == "" %}
       - SERVICES=lambda
       {%- elif cookiecutter.aws_services != "" %}
