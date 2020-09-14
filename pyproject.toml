@@ -1,0 +1,17 @@
+[tool.poetry]
+authors = ["rokoatcoffee"]
+description = "Cookiecutter project to jumpstart an AWS Lambda with Github actions as a CI/CD to build and deploy, and use Localstack for local dev."
+name = "aws-lambda-actions"
+version = "0.1.0"
+
+[tool.poetry.dependencies]
+python = "^3.8"
+
+[tool.poetry.dev-dependencies]
+autopep8 = "^1.5.4"
+flake8 = "^3.8.3"
+pytest = "^6.0.2"
+
+[build-system]
+build-backend = "poetry.masonry.api"
+requires = ["poetry>=0.12"]

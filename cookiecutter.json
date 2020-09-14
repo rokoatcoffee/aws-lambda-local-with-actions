@@ -1,0 +1,12 @@
+{
+    "project_name": "",
+    "project_slug": "{{ cookiecutter.project_name.lower().replace(' ', '_').replace('-', '_') }}",
+    "author": "",
+    "description": "",
+    "version": "0.1.0",
+    "aws_services": "",
+    "AWS_ACCESS_KEY_ID": "local",
+    "AWS_SECRET_ACCESS_KEY": "local",
+    "AWS_DEFAULT_REGION": "us-east-1",
+    "output_format": "json"
+}

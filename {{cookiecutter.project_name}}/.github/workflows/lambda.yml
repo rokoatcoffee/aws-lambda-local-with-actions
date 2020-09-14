@@ -1,0 +1,43 @@
+name: Lambda
+
+on:
+  pull_request:
+    branches: [ master ]
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v2
+
+      - name: Setup python
+        uses: actions/setup-python@v2
+        with:
+          python-version: 3.8
+
+      - name: Setup poetry
+        uses: abatilo/actions-poetry@v2.0.0
+        with:
+          poetry-version: 1.0.9
+
+      - name: Export requirements
+        run: |
+          poetry lock && poetry export --without-hashes -f requirements.txt > requirements.txt
+
+      - name: Install and zip files
+        run: |
+          mkdir app
+          pip install -r ./requirements.txt --target=./app
+          cp -r ./src/.  ./app
+          cd app
+          zip -r ../app.zip *
+
+      - name: Update Lambda
+        uses: appleboy/lambda-action@master
+        with:
+          aws_access_key_id: ${{ secrets.AWS_ACCESS_KEY_ID }}
+          aws_secret_access_key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
+          aws_region: ${{ secrets.AWS_REGION }}
+          function_name: {{cookiecutter.project_slug}}
+          zip_file: app.zip

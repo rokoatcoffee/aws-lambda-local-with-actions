@@ -1,0 +1,24 @@
+version: '3'
+services:
+  localstack:
+    image: localstack/localstack:0.11.4
+    container_name: localstack
+    ports:
+      - 4566:4566
+    environment:
+      - AWS_ACCESS_KEY_ID={{ cookiecutter.AWS_ACCESS_KEY_ID }}
+      - AWS_SECRET_ACCESS_KEY={{ cookiecutter.AWS_SECRET_ACCESS_KEY }}
+      - AWS_DEFAULT_REGION={{ cookiecutter.AWS_DEFAULT_REGION }}
+      - SERVICES=lambda
+      {%- if cookiecutter.aws_services == "" %}
+      - SERVICES=lambda
+      {%- elif cookiecutter.aws_services != "" %}
+      - SERVICES=lambda,{{ cookiecutter.aws_services }}
+      {%- endif %}
+      - DEBUG=1
+      - DATA_DIR=/tmp/localstack/data
+      - LAMBDA_EXECUTOR=local
+    volumes:
+      - './.localstack:/tmp/localstack'
+      - './.localstack/data/lambda:/tmp/localstack/data/lambda'
+      - '/var/run/docker.sock:/var/run/docker'
