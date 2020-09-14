@@ -26,7 +26,7 @@ In theory, if the project is simple enough, you would not need to open the AWS M
 ## Cookiecutter
 
 Parameters defined in the cookiecutter.json are:
-- project_name  - Used as the Lambda function name as well as the project name
+- project_name  - used as the Lambda function name as well as the input for the projet_slug to replace spaces and dashes in the python module names
 - author
 - description
 - version

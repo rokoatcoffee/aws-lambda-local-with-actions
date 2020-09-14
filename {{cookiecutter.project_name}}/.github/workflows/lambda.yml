@@ -41,5 +41,5 @@ jobs:
           aws_secret_access_key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
           aws_region: ${{ secrets.AWS_REGION }}
         {% endraw %}
-          function_name: {{cookiecutter.project_slug}}
+          function_name: {{cookiecutter.project_name}}
           zip_file: app.zip
