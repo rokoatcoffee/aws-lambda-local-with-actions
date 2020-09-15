@@ -1,0 +1,19 @@
+version: '3'
+services:
+  localstack:
+    image: localstack/localstack:0.11.4
+    container_name: localstack
+    ports:
+      - 4566:4566
+    environment:
+      - AWS_ACCESS_KEY_ID=local
+      - AWS_SECRET_ACCESS_KEY=local
+      - AWS_DEFAULT_REGION=us-east-1
+      - SERVICES=lambda,s3
+      - DEBUG=1
+      - DATA_DIR=/tmp/localstack/data
+      - LAMBDA_EXECUTOR=local
+    volumes:
+      - './.localstack:/tmp/localstack'
+      - './.localstack/data/lambda:/tmp/localstack/data/lambda'
+      - '/var/run/docker.sock:/var/run/docker'

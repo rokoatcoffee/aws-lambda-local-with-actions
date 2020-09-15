@@ -95,6 +95,34 @@ The Dockerfile is used to install wanted packages for the Localstack container.
 
 AWS uses Linux to run Lambda functions, and this is a way to build and zip all packages in a similar environment and not worry about using a different OS.
 
+## Example
+
+The example folder is a project created from the cookiecutter, with the name `example`.
+
+The relevant cookiecutter input is the project_name `example` and aws_services `s3`.
+
+An additional script is added as a wrapper around s3 api.
+
+### Local
+The steps to run everything in the Localstack are:
+
+```bash
+$ docker-compose up -d
+$
+$ chmod +x /scripts/lambda.sh
+$ chmod +x /scripts/bucket.sh
+$
+$ scripts/bucket.sh setup
+$
+$ scripts/lambda.sh build
+$ scripts/lambda.sh create
+$ scripts/lambda.sh invoke
+```
+
+### Production
+To get everything working on AWS, check if the deployed Lambda has `permission to read` from the `s3 bucket`. If you don't have a bucket, create it and upload the example csv file in the data folder. After this and a pull request to the master branch of the project, you will be able to invoke the deployed Lambda with the proper bucket and file name in the event.json.
+
+
 ## Notes
 
 ### Localstack
