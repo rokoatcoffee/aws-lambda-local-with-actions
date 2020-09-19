@@ -143,7 +143,7 @@ This way we have everything we need in one place and can create a zip to update 
 
 That is way the defined Github Action uses poetry to lock the package versions and create a requirements.txt used by pip.
 
-[lambda]: [https://aws.amazon.com/lambda/]
-[localstack]: [https://github.com/localstack/localstack]
-[cli]: [https://aws.amazon.com/cli/]
-[named]: [https://docs.aws.amazon.com/cli/latest/userguide/cli-configure-profiles.html]
+[lambda]: https://aws.amazon.com/lambda/
+[localstack]: https://github.com/localstack/localstack
+[cli]: https://aws.amazon.com/cli/
+[named]: https://docs.aws.amazon.com/cli/latest/userguide/cli-configure-profiles.html
